@@ -2,7 +2,7 @@ extends Node # instancia a classe Node2D
 
 var status = 1 # se esta 1, funciona o jogo
 var vscore = 0 # modifica o placar
-var x = 7# velocidade horizontal
+var x = 2.3# velocidade horizontal
 var y = 1.5  # velocidade vertical 
 
 # executa essa função ao carregar o jogo
