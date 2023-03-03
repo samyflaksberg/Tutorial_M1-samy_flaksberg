@@ -1,57 +1,57 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Node2D.gd" type="Script" id=1]
+[ext_resource path="res://player 1.gd" type="Script" id=1]
+[ext_resource path="res://Extended_universe_logarithmic_illustration_(English_annotated).png" type="Texture" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 185.5, 194.5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 186.5, 176 )
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 99.3227
 
 [node name="Node2D" type="Node2D"]
+
+[node name="ExtendedUniverseLogarithmicIllustration(EnglishAnnotated)" type="Sprite" parent="."]
+position = Vector2( 388, 507 )
+texture = ExtResource( 2 )
+
+[node name="player 1" type="KinematicBody2D" parent="."]
+position = Vector2( 192, 189 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="LineEdit" type="LineEdit" parent="."]
-margin_left = 776.0
-margin_top = 11.0
-margin_right = 999.0
-margin_bottom = 105.0
+[node name="Icon" type="Sprite" parent="player 1"]
+scale = Vector2( 5.84375, 6.35938 )
+texture = ExtResource( 3 )
 
-[node name="errado" type="Label" parent="LineEdit"]
-margin_left = 146.0
-margin_top = 1.0
-margin_right = 231.0
-margin_bottom = 65.0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player 1"]
+shape = SubResource( 1 )
 
-[node name="Button" type="Button" parent="."]
-margin_left = 145.0
-margin_top = 42.0
-margin_right = 336.0
-margin_bottom = 146.0
-text = "Minha lista"
+[node name="player 2" type="KinematicBody2D" parent="."]
+position = Vector2( 687, 570 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Label" type="Label" parent="."]
-margin_left = 458.0
-margin_top = 207.0
-margin_right = 979.0
-margin_bottom = 563.0
+[node name="Icon" type="Sprite" parent="player 2"]
+position = Vector2( 150, -150 )
+scale = Vector2( 6.23437, 5.51562 )
+texture = ExtResource( 3 )
 
-[node name="Button2" type="Button" parent="."]
-margin_left = 142.0
-margin_top = 166.0
-margin_right = 351.0
-margin_bottom = 256.0
-text = "Enviar"
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player 2"]
+position = Vector2( 150, -150 )
+shape = SubResource( 2 )
 
-[node name="Button3" type="Button" parent="."]
-margin_left = 131.0
-margin_top = 275.0
-margin_right = 357.0
-margin_bottom = 393.0
-text = "Aperte para uma surpresa"
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="Button4" type="Button" parent="."]
-margin_left = 122.0
-margin_top = 405.0
-margin_right = 368.0
-margin_bottom = 587.0
-text = "Digite um numero"
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 395, 810 )
+shape = SubResource( 3 )
 
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
-[connection signal="pressed" from="Button3" to="." method="_on_Button3_pressed"]
-[connection signal="pressed" from="Button4" to="." method="_on_Button4_pressed"]
+[connection signal="body_entered" from="Area2D" to="player 1" method="_on_Area2D_body_entered"]
